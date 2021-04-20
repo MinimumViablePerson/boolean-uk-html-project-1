@@ -17,7 +17,13 @@ html {
 
 }
 
+
 /* UTILITY STYLES */
+
+a {
+   text-decoration: none;
+   font-weight: 600;
+}
 
 h1 {
    font-size: 2.5rem;
@@ -46,8 +52,6 @@ h4 {
    margin-bottom: 0.8rem;
 }
 
-
-
 .button {
    padding: 10px 14px;
    background-color: var(--darker-grey);
@@ -55,6 +59,8 @@ h4 {
    border-radius: 30px;
    font-size: 0.9rem;
    color: var(--white);
+   max-width: 200px;
+   text-align: center;
 }
 
 .container {
@@ -63,6 +69,8 @@ h4 {
    background-size: 35%;
    background-repeat: repeat;
    height: 100%;
+
+   cursor: url(images/icons/cursor.svg), auto;
 }
 
 .dropshadow  {
@@ -84,10 +92,14 @@ h4 {
 }
 
 .wrapper {
-   max-width: 800px;
-   padding: 4rem 3rem;
+   max-width: 900px;
+   padding: 3rem 3rem;
    margin-left: auto;
    margin-right: auto;
+}
+
+.white {
+   color: var(--white);
 }
 
 /* TOP NAV  */
@@ -110,8 +122,22 @@ h4 {
    transform: rotate(12deg);
 }
 
-.top-nav .basket:active {
+.top-nav .basket:hover,
+.top-nav .account:hover,
+.top-nav .menu:hover {
    fill: var(--red);
+}
+
+.basket:active {
+   animation-name: basket;
+   animation-duration: .2s;
+}
+
+@keyframes basket {
+   0% {transform:rotate(0deg);}
+   30% {transform:rotate(5deg);}
+   100% {transform:rotate(-5deg);}
+   
 }
 
 /* HERO */
@@ -120,8 +146,6 @@ h4 {
    background-image: url(images/500_F_269909534_p304vArsMXZLsYuz6Ab0nqRs55GRahnF.jpg);
    background-size: 100%;
    background-position: center;
-   background-image: no-repeat;
-
 }
 
 .hero {
@@ -191,7 +215,6 @@ h4 {
 
    padding: 30px;
    color: black;
-
 }
 
 .footer ul {
@@ -203,12 +226,24 @@ h4 {
    font-size: 0.8rem;
    margin-bottom: 0.2rem;
    font-weight: 400;
-   
+}
+
+.footer a{
+   color: var(--black);
 }
 
 .footer .socials .icon {
    margin-left: 10px;
 }
+
+.footer .socials .icon:hover {
+   fill: var(--white);
+}
+
+.footer .socials .icon:active {
+   transform: scale(0.93);
+}
+
 
 /* BOOKING PAGE */
 
@@ -225,4 +260,150 @@ h4 {
 .booking .aside img {
    height: 200%;
    object-fit: cover;
+}
+
+
+
+/* MENU PAGE  */
+
+.food-section {
+   height: 90vh;
+   overflow: scroll;
+}
+
+.food-nav ol{
+   text-align: center;
+   padding-top: 2rem;
+   padding-inline-start: 0px;
+}
+
+.food-nav li {
+   display: inline-block;
+   margin: 0 15px;
+}
+
+.food-nav a{
+   color: var(--white);
+}
+.food-nav a:hover{
+   color: var(--red);
+}
+.food-nav a:active{
+   color: var(--pink);
+}
+
+.food .title {
+   color: white;
+   text-align: center;
+   font-size: 1.3rem;
+}
+
+.starters,
+.mains,
+.sides {
+   display: grid;
+   grid-template-columns:repeat(auto-fit, minmax(225px,auto));
+
+   gap: 20px;
+   margin-bottom: 25px;
+}
+
+.mealcard {
+   background-color: var(--light-grey);
+   border-radius: 10px;
+   padding: 15px;
+   text-align: center;
+   box-shadow: 0 0 10px rgba(0, 0, 0, 1);
+   position: relative;
+}
+
+.mealcard:hover {
+   background-color: var(--white);
+   border: solid 1px var(--red);
+   transform: scale(1.03);
+}
+
+.mealcard button {
+   background-color: var(--red);
+   border: none;
+   width: 30px;
+   height: 30px;
+   border-radius: 50%;
+   color: white;
+
+   position: absolute;
+   right: 10px;
+   bottom: 10px;
+}
+
+.mealcard button:hover {
+   background-color: var(--pink);
+   opacity: 50%;
+}
+
+.mealcard button:active {
+   transform: scale(0.9);
+}
+
+.mealcard .like {
+   fill: var(--dark-grey);
+   border: none;
+   width: 26px;
+   height: 20px;
+   border-radius: 50%;
+   color: white;
+
+   position: absolute;
+   left: 10px;
+   top: 10px;
+}
+
+.mealcard .like:hover{
+   opacity: 60%;
+}
+
+.mealcard .like:active{
+   fill: var(--red);
+   transform: scale(1.3);
+}
+
+.mealcard .dish {
+   max-width: 200px;
+   border-radius: 50%;
+}
+
+.mealcard .name {
+   font-size:medium;
+   color: var(--red);
+margin: 5px 0px;
+}
+
+.mealcard .price {
+font-size: 0.7rem;
+color: var(--dark-grey);
+}
+
+.food-section hr {
+   margin: 25px 0;
+   border: solid 1px var(--dark-grey);
+}
+
+.bottom-button   {
+   display: grid;
+   justify-content: center;
+   margin: 20px 0;
+}
+
+@media screen and (max-width:800px) {
+   .footer {
+      display: none;
+   }
+   .top-nav {
+      position: fixed;
+      bottom: 0;
+      width: 100vw;
+      z-index: 10;
+   }
+
+
 }
