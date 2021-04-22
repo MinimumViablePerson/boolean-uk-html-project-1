@@ -124,7 +124,7 @@ ol {
    display: block;
    background-color:var(--light-grey);
    font-size: 0.9rem;
-   padding: 10px;
+   padding: 5px;
    border-radius: 3px;
    width: 200px;
    margin-bottom: 15px;
@@ -140,6 +140,56 @@ ol {
 .white {
    color: var(--white);
 }
+
+  /* generic overlay  */
+
+  #overlay {
+   position: fixed;
+   display: none;
+   width: 100%;
+   height: 100%;
+   top: 0;
+   left: 0;
+   right: 0;
+   bottom: 0;
+   background-color: rgba(0, 0, 0, 0.6);
+   z-index: 2;
+   cursor: pointer;
+
+   overflow: scroll;
+ }
+ 
+ #text{
+   position: absolute;
+   top: 50%;
+   left: 50%;
+   color: white;
+   text-align: center;
+   transform: translate(-50%,-50%);
+   -ms-transform: translate(-50%,-50%);
+
+   background-color: var(--black);
+   border: solid 1px var(--pink);
+   padding: 2rem;
+   border-radius: 10px;
+
+   width: auto;
+ }
+
+ .overlay-sub {
+   font-size: 1rem;
+ }
+
+ .cancel-button {
+    border: none;
+ }
+
+ .pay-button,
+ .cancel-button {
+   margin-top: 10px;
+ }
+
+/* end of generic overlay  */
 
 /* TOP NAV  */
 
@@ -193,6 +243,8 @@ ol {
    border-radius: 0 0 20px 0;
    padding: 5px;
    width: 110px;
+   text-transform: uppercase;
+   font-size: 0.7rem;
 }
 
 .dropdown li:hover {
@@ -217,8 +269,9 @@ ol {
 .hero-section{
    background-color: black;
    background-image: url(images/hero_index_d.jpg);
-   background-size: 100%;
+   object-fit: cover;
    background-position: center;
+   
 }
 
 .hero {
@@ -272,10 +325,13 @@ ol {
    display: grid;
    grid-template-columns: 30px 1fr 1fr 1fr 1fr 30px;
    place-items: center;
+   gap: 15px;
 }
 
 .gallery .pic {
-   max-width: 150px;
+   object-fit: cover;
+   width: 100%;
+   height: 100%;
 }
 
 .gallery .pic:hover {
@@ -295,7 +351,7 @@ grid-area: footer;
    display: grid;
    grid-template-columns: 1fr auto;
 
-   padding: 30px;
+   padding: 20px 30px;
    color: black;
 }
 
@@ -326,8 +382,81 @@ grid-area: footer;
    transform: scale(0.93);
 }
 
+/* ORDER PAGE  */
+
+   /* order overlay  */
+
+   .basket-overlay form{
+      display: grid;
+      grid-auto-flow: column;
+      gap: 40px;
+      text-align: left;
+      font-size: 0.9rem;
+      font-weight: 300;
+      margin-top: 30px;
+   }
+
+   #text {
+      
+   }
+
+   /* end of order overlay  */
+
+.order h3 {
+   margin-bottom: 0;
+}
+
+.order {
+   display: grid;
+   grid-template-columns: 2fr 200px;
+   gap: 20px;
+   color: white;
+}
+
+.order .form {
+   padding: 20px;
+   font-size: 0.9rem;
+   font-weight: 300;
+}
+
+.order li {
+   margin-bottom: 5px;
+}
+
+.order .item {
+   display: grid;
+   grid-template-columns: 2fr 1fr 40px 50px;
+   align-items: center;
+   gap: 15px;
+
+   border: solid 1px var(--dark-grey);
+   padding: 20px;
+   background-color: rgba(0, 0, 0, 0.3);
+}
+
+.order input,
+.order select {
+   background-color: rgba(0, 0, 0, 0);
+   color: white;
+   border: 0;
+   border-bottom: 1px solid var(--pink);
+   padding: 3px;
+}
+
+.order .total {
+   display: grid;
+   grid-template-columns: 1fr 50px;
+   background-color: #e8534e5e;
+   padding: 10px 20px;
+   font-weight: 600;
+}
+
+.order-button {
+   margin-top: 15px;
+}
 
 /* BOOKING PAGE */
+
 
 .booking {
    display: grid;
@@ -336,15 +465,17 @@ grid-area: footer;
    color: white;
 }
 
-.form {
+.booking .form {
    display: grid;
    grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
    gap: 15px;
    padding: 20px;
+   font-size: 0.9rem;
+   font-weight: 300;
 }
 
-.booking .info-form {
-   
+.info-form:focus {
+   outline: 1px solid var(--pink);
 }
 
 .aside {
@@ -462,7 +593,8 @@ overflow: hidden;
 }
 
 .mealcard .dish {
-   max-width: 200px;
+   width: 200px;
+   height: 200px;
    border-radius: 50%;
 }
 
@@ -511,6 +643,15 @@ color: var(--dark-grey);
    .main {
       overflow: scroll;
    }
+
+   .top-nav .dropdown {
+      bottom: 40px;
+   }
+
+   .dropdown li{
+      padding: 10px;
+      width: 130px;
+   }
 }
 
 @media screen and (max-width:800px) {
@@ -536,7 +677,8 @@ color: var(--dark-grey);
    /* menu page  */
 
    .mealcard .dish {
-      max-width: 80px;
+      width: 80px;
+      height: 80px;
    }
 
    .mealcard {
@@ -545,7 +687,14 @@ color: var(--dark-grey);
       place-items: center;
    }
 
+   .booking,
+   .order {
+      grid-template-columns: 1fr;
+   }
    .aside {
       display: none;
    }
+
+   .basket-overlay form{
+      grid-auto-flow: row;
 }
