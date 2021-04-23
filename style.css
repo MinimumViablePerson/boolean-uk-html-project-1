@@ -30,6 +30,10 @@ a:visited {
    color: white;
 }
 
+.blocklink {
+   display: block;
+}
+
 h1 {
    font-size: 2.5rem;
    font-weight: 600;
@@ -141,6 +145,10 @@ ol {
    color: var(--white);
 }
 
+.red {
+   color: var(--red);
+}
+
   /* generic overlay  */
 
   #overlay {
@@ -241,7 +249,6 @@ ol {
    background-color: var(--black);
    border: solid 1px var(--red);
    border-radius: 0 0 20px 0;
-   padding: 5px;
    width: 110px;
    text-transform: uppercase;
    font-size: 0.7rem;
@@ -249,6 +256,10 @@ ol {
 
 .dropdown li:hover {
    background-color: var(--darker-grey);
+}
+
+.dropdown a{
+   padding: 5px;
 }
 
 @keyframes basket {
@@ -396,9 +407,6 @@ grid-area: footer;
       margin-top: 30px;
    }
 
-   #text {
-      
-   }
 
    /* end of order overlay  */
 
@@ -616,10 +624,66 @@ color: var(--dark-grey);
 
 .bottom-button   {
    display: grid;
+   grid-auto-flow: column;
+   gap: 20px;
    justify-content: center;
    margin: 20px 0;
 }
 
+/* DELIVERY PROGRESS PAGE  */
+
+.progress {
+   text-align: center;
+   color: white;
+}
+
+.progress-basket {
+   width: 4rem;
+   fill: var(--red);
+   margin: 30px 0;
+
+   animation: basket-spin 2.2s linear infinite;
+}
+
+@keyframes basket-spin {
+   0%   { transform: scale(1,1) translateY(0); }
+   15%  { transform: scale(1,1) translateY(0); }
+   20%  { transform: scale(1,1) translateY(-30px);}
+   25%  { transform: scale(1.05, 0.9) translateY(-3px); }
+   32%  { transform: scale(1,1) translateY(0) rotate(0);}
+   50%  { transform: scale(1,1) translateY(0) rotate(0);}
+   85%  { transform: scale(1,1)  translateY(0) rotate(360deg);}
+   100% { transform: scale(1,1)  translateY(0) rotate(360deg);}   
+}
+
+/* ACCOUNT PAGE  */
+
+.account {
+   color: white;
+}
+
+.account a{
+   color: var(--red);
+}
+
+.account .item {
+   display: grid;
+   grid-template-columns: 1fr 1fr 150px 50px;
+   align-items: center;
+   gap: 15px;
+
+   border: solid 1px var(--dark-grey);
+   padding: 20px;
+   background-color: rgba(0, 0, 0, 0.3);
+   margin-bottom: 10px;
+}
+
+.account .item:hover {
+   background-color: rgba(0, 0, 0, 0.5);
+}
+
+
+/* MEDIA QUERIES  */
 
 @media screen and (max-width:450px) {
    .container {
@@ -645,7 +709,7 @@ color: var(--dark-grey);
    }
 
    .top-nav .dropdown {
-      bottom: 40px;
+      bottom: 30px;
    }
 
    .dropdown li{
@@ -697,4 +761,5 @@ color: var(--dark-grey);
 
    .basket-overlay form{
       grid-auto-flow: row;
+}
 }
